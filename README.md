@@ -30,11 +30,11 @@ SSH Plugin
 ```
 ### jenkins credential configuration
 
-####Steps:
+#### Steps:
 ```
 Jenkins > credential > System > Global Credential > Add Credential > web server ssh credential e.g. username : root password:123
 ```
-####Steps:
+#### Steps:
 ```
 Jenkins > credential > System > Global Credential > Add Credential > dockerhub credential
 ```
@@ -47,7 +47,7 @@ Enter an item name > pipeline > Build Triggers > GitHub hook trigger for GITScm 
 
 ## Jenkins Create Project for pull new docker image
 
-####Steps:
+#### Steps:
 ```
 Enter an item name > Source Code Management > git > Repository URL (https://github.com/dipenpatel235/webpage.git) > Build triggers > GitHub hook trigger for GITScm polling > build > SSH Site(choose remote ssh) > command (paste below docker script commands) >  execute each line > Save
 ```
