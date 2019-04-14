@@ -1,28 +1,25 @@
 node {
     def app
 
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
 
+    /* Clone Github Repo */
+    stage('Clone repository') {
         checkout scm
     }
 
+    /* Build Docker Image */
     stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-
         app = docker.build("dipend/webpage")
     }
 
+    /* Test Docker Image */
     stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * Just an example */
-
         app.inside {
-            sh 'echo "Tests passed"'
+            sh 'echo "Test success"'
         }
     }
 
+    /* Push Docker Image to registery*/
     stage('Push image') {
         /* Finally, we'll push the image with two tags:
          * First, the incremental build number from Jenkins
