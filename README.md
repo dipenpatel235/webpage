@@ -1,7 +1,13 @@
 # Hello Application Demo 
 
-## server dependancy
+## server requirements 
+ 1. jenkins server (ubuntu 18)
+ 2. web server (ubuntu 18)
 
+*  Note: below  all commands related ubunutu 18
+
+## server dependancy
+```
 apt-get install git unzip
 apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -11,8 +17,10 @@ apt-get install docker-ce docker-ce-cli containerd.io
 wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 mv ngrok /usr/bin
+```
 
 ## jenkins installation
+*  follow steps to install jenkins server
 `https://linuxize.com/post/how-to-install-jenkins-on-ubuntu-18-04/`
 
 ### jenkins required plugin
@@ -22,17 +30,28 @@ SSH Plugin
 ```
 ### jenkins credential configuration
 
-Jenkins > credential > System > Global Credential > Add Credential > web server ssh credential e.g. username : root password:123 > id: webpage
-
+####Steps:
+```
+Jenkins > credential > System > Global Credential > Add Credential > web server ssh credential e.g. username : root password:123
+```
+####Steps:
+```
 Jenkins > credential > System > Global Credential > Add Credential > dockerhub credential
-
+```
 
 ## Jenkins Create Project for generate docker image
-Enter an item name > pipeline > Build Triggers > GitHub hook trigger for GITScm polling > Pipeline > Pipeline Script From SCM > SCM  >  Git > Repository URL (https://github.com/dipenpatel235/webpage.git) > Save
 
+```
+Enter an item name > pipeline > Build Triggers > GitHub hook trigger for GITScm polling > Pipeline > Pipeline Script From SCM > SCM  >  Git > Repository URL (https://github.com/dipenpatel235/webpage.git) > Save
+```
 
 ## Jenkins Create Project for pull new docker image
-Enter an item name > Source Code Management > git > Repository URL (https://github.com/dipenpatel235/webpage.git) > Build triggers > GitHub hook trigger for GITScm polling > build > SSH Site(choose remote ssh) > command (paster below data) >  execute each line > Save
+
+####Steps:
+```
+Enter an item name > Source Code Management > git > Repository URL (https://github.com/dipenpatel235/webpage.git) > Build triggers > GitHub hook trigger for GITScm polling > build > SSH Site(choose remote ssh) > command (paste below docker script commands) >  execute each line > Save
+```
+
 ```
 sleep 60
 docker pull dipend/webpage
