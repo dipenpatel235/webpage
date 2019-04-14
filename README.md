@@ -1,4 +1,5 @@
-# Hello Application Demo 
+# Hello Application Demo (github+jenkins+docker)
+when user will push code on github repository then it will auto build on jenkins by webhooks and deploy new docker image and that new docker image will auto pull on webserver and release will happen successfully
 
 ## server requirements 
  1. jenkins server (ubuntu 18)
